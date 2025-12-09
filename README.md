@@ -25,4 +25,38 @@ Your app is ready to be deployed!
 
 ## Deployment
 
-Learn more about deploying your application with the [documentations](https://vite.dev/guide/static-deploy.html)
+### Deploy to Vercel
+
+The project is configured for Vercel deployment with `vercel.json`.
+
+**Option 1: Deploy via Vercel CLI**
+```bash
+# Install Vercel CLI globally
+npm i -g vercel
+
+# Deploy
+vercel
+
+# For production deployment
+vercel --prod
+```
+
+**Option 2: Deploy via Vercel Dashboard**
+1. Push your code to GitHub:
+   ```bash
+   git remote add origin <your-github-repo-url>
+   git push -u origin main
+   ```
+
+2. Go to [vercel.com](https://vercel.com) and sign in
+3. Click "Add New Project"
+4. Import your GitHub repository
+5. Vercel will auto-detect the settings:
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+6. Click "Deploy"
+
+The `vercel.json` file is already configured to handle client-side routing for your SolidJS SPA.
+
+Learn more about deploying your application with the [Vite deployment docs](https://vite.dev/guide/static-deploy.html)
