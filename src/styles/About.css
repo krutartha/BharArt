@@ -1,0 +1,263 @@
+/* About Page Styles */
+
+.about-story {
+  padding: 4rem 4.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.story-content h2 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 2.5rem;
+  color: #843c23;
+  margin: 0 0 2rem;
+}
+
+.story-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(47, 30, 15, 0.8);
+  margin: 0 0 1.5rem;
+}
+
+.values-section,
+.team-section {
+  padding: 4rem 4.5rem;
+}
+
+.values-section h2,
+.team-section h2 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 2.5rem;
+  color: #843c23;
+  text-align: center;
+  margin: 0 0 3rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.value-card h3 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.5rem;
+  color: #843c23;
+  margin: 0 0 1rem;
+}
+
+.value-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(47, 30, 15, 0.8);
+  margin: 0;
+}
+
+/* Experience Section */
+.experience-section {
+  padding: 4rem 4.5rem;
+}
+
+.experience-section h2 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 2.5rem;
+  color: #843c23;
+  text-align: center;
+  margin: 0 0 3rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 6rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.experience-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.stat-number {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #843c23;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+.stat-unit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #843c23;
+  margin: 0 0 1rem;
+  text-transform: lowercase;
+  opacity: 0.9;
+}
+
+.stat-description {
+  font-size: 1.1rem;
+  color: #2f1e0f;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 100%;
+  opacity: 0.85;
+}
+
+/* Responsive Styles */
+@media (max-width: 960px) {
+  .about-story {
+    padding: 3rem 2rem;
+  }
+
+  .values-section,
+  .team-section {
+    padding: 3rem 2rem;
+  }
+
+  .experience-section {
+    padding: 4rem 2rem;
+  }
+
+  .experience-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .experience-grid {
+    gap: 3rem 4rem;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+
+  .stat-unit {
+    font-size: 1.3rem;
+  }
+
+  .stat-description {
+    font-size: 1rem;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .about-story {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .story-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-content p {
+    font-size: 1rem;
+  }
+
+  .values-section,
+  .team-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .experience-section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .experience-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .stat-unit {
+    font-size: 1.2rem;
+  }
+
+  .stat-description {
+    font-size: 0.95rem;
+  }
+
+  .values-section h2,
+  .team-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .value-card {
+    padding: 1.5rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-story,
+  .values-section,
+  .team-section {
+    padding: 2rem 1rem;
+  }
+
+  .experience-section {
+    padding: 3rem 1rem;
+  }
+
+  .experience-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-unit {
+    font-size: 1.1rem;
+  }
+
+  .stat-description {
+    font-size: 0.9rem;
+  }
+}
+

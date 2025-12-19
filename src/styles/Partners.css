@@ -1,0 +1,225 @@
+/* Partners Page Styles */
+
+.partners-showcase {
+  padding: 4rem 4.5rem;
+}
+
+.partners-showcase h2 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 2.5rem;
+  color: #843c23;
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.partners-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(47, 30, 15, 0.8);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.partner-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-logo-container {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.partner-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.partner-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.partner-info h3 {
+  font-size: 1.3rem;
+  color: #843c23;
+  margin: 0 0 0.25rem;
+}
+
+.partner-type {
+  font-size: 0.9rem;
+  color: rgba(47, 30, 15, 0.6);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.partner-specialization {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #843c23;
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.partner-specialization strong {
+  color: #2f1e0f;
+  font-weight: 700;
+}
+
+.partner-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(47, 30, 15, 0.8);
+  margin: 0 0 1.5rem;
+}
+
+.partner-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: rgba(47, 30, 15, 0.7);
+  margin: 0 0 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.location-icon {
+  font-size: 1rem;
+}
+
+.partner-artforms {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.artforms-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #843c23;
+}
+
+.artforms-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.artform-tag {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(204, 78, 0, 0.1);
+  color: #cc4e00;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 960px) {
+  .partners-showcase {
+    padding: 3rem 2rem;
+  }
+
+  .partners-intro {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .partners-showcase {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .partners-intro {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .partner-card {
+    padding: 1.5rem;
+  }
+
+  .partner-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .partner-logo-container {
+    height: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .partners-showcase h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .partner-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .partner-specialization {
+    font-size: 0.95rem;
+  }
+
+  .partner-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-showcase {
+    padding: 2rem 1rem;
+  }
+
+  .partners-intro {
+    font-size: 0.9rem;
+  }
+
+  .partners-showcase h2 {
+    font-size: 1.75rem;
+  }
+}
+

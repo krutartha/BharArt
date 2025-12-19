@@ -1,57 +1,67 @@
 import '../App.css'
+import '../styles/Partners.css'
 
-const partners = [
+const artistPartners = [
   {
-    name: 'TechCorp India',
-    industry: 'Technology',
-    testimonial:
-      'BharArt has been instrumental in creating a more inclusive and culturally aware workplace. Our employees look forward to every session.',
-    programs: ['Classical Dance', 'Yoga & Meditation'],
+    name: 'Kalakshetra Foundation',
+    type: 'Art Institute',
+    logo: '/1.jpg',
+    specialization: 'Classical Dance & Music',
+    description:
+      'A premier institution dedicated to preserving and promoting Indian classical arts, with expertise in Bharatanatyam, Carnatic music, and traditional crafts.',
+    artForms: ['Bharatanatyam', 'Carnatic Music', 'Traditional Crafts'],
+    location: 'Chennai, India',
   },
   {
-    name: 'Global Solutions',
-    industry: 'Consulting',
-    testimonial:
-      'The quality of instruction and cultural depth in BharArt programs exceeded our expectations. Highly recommended for any organization.',
-    programs: ['Music Sessions', 'Cultural Storytelling'],
+    name: 'Guru Padma Subrahmanyam',
+    type: 'Master Artist',
+    logo: '/1.jpg',
+    specialization: 'Bharatanatyam',
+    description:
+      'Renowned Bharatanatyam exponent and scholar with over five decades of experience, bringing authentic classical dance traditions to modern audiences.',
+    artForms: ['Bharatanatyam', 'Dance Theory', 'Cultural Heritage'],
+    location: 'Chennai, India',
   },
   {
-    name: 'InnovateLabs',
-    industry: 'Innovation',
-    testimonial:
-      "Our team's creativity and collaboration improved significantly after implementing BharArt programs. The impact has been remarkable.",
-    programs: ['Art & Craft Workshops', 'Kalaripayattu'],
+    name: 'Kalamandalam',
+    type: 'Art Institute',
+    logo: '/1.jpg',
+    specialization: 'Kerala Performing Arts',
+    description:
+      'Institution preserving Kerala\'s rich performing arts heritage, specializing in Kathakali, Mohiniyattam, and traditional martial arts.',
+    artForms: ['Kathakali', 'Mohiniyattam', 'Kalaripayattu'],
+    location: 'Kerala, India',
   },
   {
-    name: 'WellnessFirst',
-    industry: 'Healthcare',
-    testimonial:
-      'BharArt programs have become an essential part of our employee wellness initiatives. The authentic approach makes all the difference.',
-    programs: ['Yoga & Meditation', 'Music Sessions'],
+    name: 'Yoga Institute Mumbai',
+    type: 'Wellness Institute',
+    logo: '/1.jpg',
+    specialization: 'Yoga & Meditation',
+    description:
+      'Pioneering yoga institution offering authentic practices rooted in Indian tradition, focusing on holistic wellness and mindfulness.',
+    artForms: ['Hatha Yoga', 'Meditation', 'Ayurveda'],
+    location: 'Mumbai, India',
   },
   {
-    name: 'Enterprise Group',
-    industry: 'Finance',
-    testimonial:
-      'The flexibility and professionalism of BharArt allowed us to seamlessly integrate cultural programs into our busy corporate schedule.',
-    programs: ['Classical Dance', 'Art & Craft'],
+    name: 'Sangeet Natak Akademi',
+    type: 'Art Institute',
+    logo: '/1.jpg',
+    specialization: 'Music & Theatre',
+    description:
+      'National academy for music, dance, and drama, connecting master artists with organizations seeking authentic cultural experiences.',
+    artForms: ['Classical Music', 'Folk Theatre', 'Regional Dance'],
+    location: 'New Delhi, India',
   },
   {
-    name: 'Creative Minds',
-    industry: 'Media & Entertainment',
-    testimonial:
-      'As a creative organization, we appreciate the authentic artistic experiences BharArt brings. Our team is more inspired than ever.',
-    programs: ['Music Sessions', 'Art & Craft Workshops'],
+    name: 'Guru Ustad Zakir Hussain',
+    type: 'Master Artist',
+    logo: '/1.jpg',
+    specialization: 'Tabla & Percussion',
+    description:
+      'World-renowned tabla maestro bringing the rhythmic traditions of Indian classical music to global audiences through innovative workshops.',
+    artForms: ['Tabla', 'Percussion', 'Rhythm Workshops'],
+    location: 'Mumbai, India',
   },
-]
-
-const partnershipBenefits = [
-  'Customized program design',
-  'Flexible scheduling options',
-  'Expert master artists',
-  'Measurable impact tracking',
-  'Ongoing support and consultation',
-  'Scalable for organizations of all sizes',
 ]
 
 export default function Partners() {
@@ -60,56 +70,45 @@ export default function Partners() {
       <section class="page-hero">
         <h1>Our Partners</h1>
         <p class="page-subtitle">
-          Trusted by leading organizations across industries to enhance workplace culture through authentic art experiences
+          We collaborate with master artists and premier art institutes across India to bring authentic cultural experiences to your organization
         </p>
       </section>
 
       <section class="partners-showcase">
-        <h2>Organizations We Work With</h2>
+        <h2>Our Artist & Art Institute Partners</h2>
+        <p class="partners-intro">
+          BharArt partners with renowned artists, master practitioners, and prestigious art institutions to ensure the highest quality and authenticity in every program we deliver.
+        </p>
         <div class="partners-grid">
-          {partners.map((partner) => (
+          {artistPartners.map((partner) => (
             <article class="partner-card">
+              <div class="partner-logo-container">
+                <img src={partner.logo} alt={`${partner.name} logo`} class="partner-logo" />
+              </div>
               <div class="partner-header">
-                <div class="partner-avatar">
-                  {partner.name.charAt(0)}
-                </div>
                 <div class="partner-info">
                   <h3>{partner.name}</h3>
-                  <p class="partner-industry">{partner.industry}</p>
+                  <p class="partner-type">{partner.type}</p>
                 </div>
               </div>
-              <p class="partner-testimonial">"{partner.testimonial}"</p>
-              <div class="partner-programs">
-                <span class="programs-label">Programs:</span>
-                <div class="programs-tags">
-                  {partner.programs.map((program) => (
-                    <span class="program-tag">{program}</span>
+              <p class="partner-specialization">
+                <strong>Specialization:</strong> {partner.specialization}
+              </p>
+              <p class="partner-description">{partner.description}</p>
+              <div class="partner-location">
+                <span class="location-icon">📍</span>
+                <span>{partner.location}</span>
+              </div>
+              <div class="partner-artforms">
+                <span class="artforms-label">Art Forms:</span>
+                <div class="artforms-tags">
+                  {partner.artForms.map((artForm) => (
+                    <span class="artform-tag">{artForm}</span>
                   ))}
                 </div>
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section class="partnership-benefits">
-        <h2>Partnership Benefits</h2>
-        <div class="benefits-grid">
-          {partnershipBenefits.map((benefit) => (
-            <div class="benefit-item">
-              <div class="benefit-icon">✓</div>
-              <p>{benefit}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="cta-section">
-        <h2>Become a Partner</h2>
-        <p>Join leading organizations in bringing authentic Indian art and culture to your workplace</p>
-        <div class="cta-actions">
-          <button class="button primary">Start Partnership</button>
-          <button class="button ghost">Schedule a Demo</button>
         </div>
       </section>
     </div>

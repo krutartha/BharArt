@@ -1,137 +1,96 @@
-import { createSignal, createEffect, onCleanup, onMount } from 'solid-js'
+import { createSignal, onCleanup, onMount } from 'solid-js'
 import { A } from '@solidjs/router'
 import '../App.css'
+import '../styles/Home.css'
 
 const scrapbookCards = [
-  { width: '200px', height: '250px', rotation: -12, x: '-5%', y: '8%' },
-  { width: '180px', height: '220px', rotation: 18, x: '75%', y: '5%' },
-  { width: '220px', height: '200px', rotation: -8, x: '25%', y: '20%' },
-  { width: '190px', height: '240px', rotation: 22, x: '85%', y: '25%' },
-  { width: '210px', height: '180px', rotation: -15, x: '5%', y: '50%' },
-  { width: '200px', height: '220px', rotation: 10, x: '65%', y: '55%' },
-  { width: '185px', height: '230px', rotation: -18, x: '40%', y: '80%' },
-  { width: '195px', height: '200px', rotation: 14, x: '90%', y: '85%' },
+  { width: '200px', height: '250px', rotation: -12, x: '-15%', y: '8%', image: '/1.jpg' },
+  { width: '180px', height: '220px', rotation: 18, x: '75%', y: '5%', image: '/2.jpg' },
+  { width: '220px', height: '200px', rotation: -8, x: '25%', y: '15%', image: '/3.jpg' },
+  { width: '190px', height: '240px', rotation: 22, x: '95%', y: '25%', image: '/4.jpg' },
+  { width: '210px', height: '180px', rotation: -15, x: '5%', y: '60%', image: '/5.jpg' },
+  { width: '200px', height: '220px', rotation: 10, x: '65%', y: '55%', image: '/6.jpg' },
+  { width: '185px', height: '230px', rotation: -18, x: '40%', y: '80%', image: '/7.jpg' },
+  { width: '195px', height: '200px', rotation: 14, x: '100%', y: '85%', image: '/8.jpg' },
 ]
-
-// Carousel cards (subset for carousel display)
-const carouselCards = scrapbookCards.slice(0, 6)
 
 const reasons = [
   {
-    number: 1,
+    icon: '/authentic.png',
     title: 'Authentic Cultural Connection',
     description:
-      'We bring genuine Indian art forms directly to your organization, creating meaningful connections between your team and rich cultural traditions.',
-    testimonial: {
-      quote:
-        'BharArt transformed our workplace culture. The authentic art experiences created a sense of community and appreciation for Indian heritage that we never had before.',
-      name: 'Priya Sharma',
-      role: 'HR Director, TechCorp India',
-      company: 'TechCorp India',
-    },
+      'Bring genuine Indian art forms directly to your organization, creating meaningful connections with rich cultural traditions.',
   },
   {
-    number: 2,
+    icon: '/expert.png',
     title: 'Expert-Curated Experiences',
     description:
-      'Our programs are designed by master artists and cultural experts, ensuring authentic and transformative experiences for your team.',
-    testimonial: {
-      quote:
-        'The quality of instruction and the depth of cultural knowledge our team gained was exceptional. It was more than a workshop—it was a journey.',
-      name: 'Rajesh Kumar',
-      role: 'VP of Operations, Global Solutions',
-      company: 'Global Solutions',
-    },
+      'Programs designed by master artists and cultural experts, ensuring authentic and transformative experiences.',
   },
   {
-    number: 3,
+    icon: '/flexible.png',
     title: 'Flexible Program Formats',
     description:
-      'From one-time workshops to ongoing programs, we adapt to your schedule and organizational needs, making cultural enrichment accessible.',
-    testimonial: {
-      quote:
-        'The flexibility to customize programs around our busy schedule made all the difference. Our team loved every session.',
-      name: 'Anita Desai',
-      role: 'Chief People Officer, InnovateLabs',
-      company: 'InnovateLabs',
-    },
+      'From one-time workshops to ongoing programs, we adapt to your schedule and organizational needs.',
   },
   {
-    number: 4,
+    icon: '/measure.png',
     title: 'Measurable Impact on Well-being',
     description:
-      'Our programs are designed to reduce stress, enhance creativity, and improve team cohesion through the therapeutic power of art.',
-    testimonial: {
-      quote:
-        'We saw a 40% increase in employee satisfaction scores after implementing BharArt programs. The impact on team well-being was remarkable.',
-      name: 'Vikram Patel',
-      role: 'CEO, WellnessFirst',
-      company: 'WellnessFirst',
-    },
+      'Reduce stress, enhance creativity, and improve team cohesion through the therapeutic power of art.',
+  },
+]
+
+const carouselItems = [
+  {
+    id: 'music',
+    title: 'Music',
+    rightImage: '/1.jpg',
+    description:
+      'Immerse your team in the rich traditions of Indian classical and folk music. From soulful ragas to vibrant regional melodies, our music programs create harmony and connection through the universal language of sound.',
   },
   {
-    number: 5,
-    title: 'Comprehensive Support',
+    id: 'dance',
+    title: 'Dance',
+    rightImage: '/1.jpg',
     description:
-      'From initial consultation to program delivery and follow-up, we provide end-to-end support to ensure your success.',
-    testimonial: {
-      quote:
-        'The team at BharArt was with us every step of the way. Their support and attention to detail made the entire process seamless.',
-      name: 'Meera Reddy',
-      role: 'Director of Culture, Enterprise Group',
-      company: 'Enterprise Group',
-    },
+      'Experience the grace and power of Indian dance forms—from classical Bharatanatyam and Kathak to energetic folk dances. Our programs combine movement, rhythm, and cultural storytelling to energize and inspire.',
+  },
+  {
+    id: 'martial-arts',
+    title: 'Martial Arts',
+    rightImage: '/1.jpg',
+    description:
+      'Discover the discipline and philosophy of traditional Indian martial arts like Kalaripayattu. Build strength, focus, and team coordination while learning ancient techniques that blend physical training with mental discipline.',
+  },
+  {
+    id: 'yoga',
+    title: 'Yoga',
+    rightImage: '/1.jpg',
+    description:
+      'Connect mind, body, and spirit through authentic yoga practices rooted in Indian tradition. Our wellness programs offer stress relief, improved flexibility, and enhanced mindfulness for a healthier, more balanced workplace.',
   },
 ]
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = createSignal(false)
-  const [currentCarouselIndex, setCurrentCarouselIndex] = createSignal(0)
-  const [isMobile, setIsMobile] = createSignal(false)
+  const [activeCarouselIndex, setActiveCarouselIndex] = createSignal(0)
 
   onMount(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
 
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 960)
-    }
-
     window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', checkScreenSize)
     handleScroll()
-    checkScreenSize()
 
     onCleanup(() => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', checkScreenSize)
     })
   })
 
-  // Auto-advance carousel on mobile
-  createEffect(() => {
-    if (isMobile()) {
-      const carouselInterval = setInterval(() => {
-        setCurrentCarouselIndex((prev) => (prev + 1) % carouselCards.length)
-      }, 3000)
-
-      onCleanup(() => {
-        clearInterval(carouselInterval)
-      })
-    }
-  })
-
-  const nextCarousel = () => {
-    setCurrentCarouselIndex((prev) => (prev + 1) % carouselCards.length)
-  }
-
-  const prevCarousel = () => {
-    setCurrentCarouselIndex((prev) => (prev - 1 + carouselCards.length) % carouselCards.length)
-  }
-
-  const goToCarouselSlide = (index) => {
-    setCurrentCarouselIndex(index)
+  const goToSlide = (index) => {
+    setActiveCarouselIndex(index)
   }
 
   return (
@@ -156,7 +115,6 @@ export default function Home() {
         </div>
 
         <div class="hero-right">
-          {/* Scrapbook cards for desktop */}
           <div class="scrapbook-container">
             {scrapbookCards.map((card, index) => (
               <div
@@ -169,83 +127,127 @@ export default function Home() {
                   transform: `rotate(${card.rotation}deg)`,
                   '--rotation': `${card.rotation}deg`,
                 }}
-              />
-            ))}
-          </div>
-
-          {/* Carousel for mobile/tablet */}
-          <div class="carousel-container">
-            <div class="carousel-wrapper">
-              <div
-                class="carousel-track"
-                style={{
-                  transform: `translateX(-${currentCarouselIndex() * 100}%)`,
-                }}
               >
-                {carouselCards.map((card, index) => (
-                  <div class="carousel-slide">
-                    <div
-                      class="carousel-card"
-                      style={{
-                        width: '280px',
-                        height: '350px',
-                      }}
-                    />
-                  </div>
-                ))}
+                <img src={card.image} alt={`Artwork ${index + 1}`} class="scrapbook-image" />
               </div>
-            </div>
-            <div class="carousel-controls">
-              <button class="carousel-button carousel-button-prev" onClick={prevCarousel} aria-label="Previous">
-                ‹
-              </button>
-              <div class="carousel-indicators">
-                {carouselCards.map((_, index) => (
-                  <button
-                    class={`carousel-indicator ${currentCarouselIndex() === index ? 'active' : ''}`}
-                    onClick={() => goToCarouselSlide(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-              <button class="carousel-button carousel-button-next" onClick={nextCarousel} aria-label="Next">
-                ›
-              </button>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section class="section why-bharart" id="about">
-        <div class="section-heading">
-          <h2>Why BharArt?</h2>
+        <div class="why-bharart-container">
+          <div class="why-bharart-left">
+            <h2 class="why-bharart-heading">
+              <span class="heading-highlight">Why</span> Bhar-Art?
+            </h2>
+            <p class="why-bharart-description">
+              We enable a range of experiences that allow you to enrich your workplace culture through authentic engagement with Indian art forms. Providing unique alternatives to traditional team-building methods, we provide you with everything you need to enhance your operations today and equip you for the cultural enrichment of tomorrow. Our comprehensive programs support multiple applications and are easy to implement, scalable, and integrate seamlessly into your existing organizational environment.
+            </p>
+            <A href="/offerings" class="button primary why-bharart-cta">
+              Explore Offerings
+            </A>
+          </div>
+          <div class="why-bharart-right">
+            <div class="reasons-grid">
+              {reasons.map((reason) => (
+                <div class="reason-item">
+                  <div class="reason-icon">
+                    <img src={reason.icon} alt={reason.title} class="reason-icon-image" />
+                  </div>
+                  <div class="reason-content">
+                    <h3 class="reason-title">{reason.title}</h3>
+                    <p class="reason-description">{reason.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {reasons.map((reason) => (
-        <section class="section reason-section" id={`reason-${reason.number}`}>
-          <div class="reason-container">
-            <div class="reason-content">
-              <h3 class="reason-title">{reason.title}</h3>
-              <p class="reason-description">{reason.description}</p>
+      <section class="section offering-overview-section">
+        <div class="offering-overview-container">
+          <h2 class="offering-overview-title">
+            Experience the Spirit of <span class="title-highlight">Bhar</span>at Through <span class="title-highlight">Art</span>
+          </h2>
+          <p class="offering-overview-subtext">
+            We offer a curated, customizable bouquet of Indian art experiences designed to engage, inspire, and uplift your organization. Our diverse portfolio spans classical and contemporary art forms—from dance and music to folk traditions, crafts, and wellness workshops—each tailored to your goals. From concept to execution, we bring authentic cultural engagement to life. And beyond
+          </p>
+
+          <div class="offering-carousel">
+            <div class="carousel-buttons">
+              {carouselItems.map((item, index) => (
+                <button
+                  class={`carousel-button ${activeCarouselIndex() === index ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to ${item.title} slide`}
+                >
+                  {item.title}
+                </button>
+              ))}
             </div>
-            <div class="testimonial-card-elegant">
-              <div class="testimonial-quote-mark">"</div>
-              <p class="testimonial-quote">{reason.testimonial.quote}</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">
-                  {reason.testimonial.name.charAt(0)}
-                </div>
-                <div class="testimonial-info">
-                  <p class="testimonial-name">{reason.testimonial.name}</p>
-                  <p class="testimonial-role">{reason.testimonial.role}</p>
-                  <p class="testimonial-company">{reason.testimonial.company}</p>
-                </div>
+            <div class="carousel-wrapper">
+              <div
+                class="carousel-track"
+                style={{
+                  transform: `translateX(-${activeCarouselIndex() * 100}%)`,
+                }}
+              >
+                {carouselItems.map((item) => (
+                  <div class="carousel-slide">
+                    <div class="carousel-content">
+                      <div class="carousel-text">
+                        <h3 class="carousel-title">{item.title}</h3>
+                        <p class="carousel-description">{item.description}</p>
+                      </div>
+                      <div class="carousel-image-container">
+                        <img src="/1.jpg" alt={item.title} class="carousel-image" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
+
+      <section class="section white-section">
+        <div class="white-section-container">
+          <div class="white-section-left">
+            <img src="/1.jpg" alt="BharArt mission" class="white-section-image" />
+          </div>
+          <div class="white-section-right">
+            <h2 class="white-section-heading">
+              Our mission: to help <span class="heading-emphasis">you</span> find better answers, sooner
+            </h2>
+            <p class="white-section-description">
+              BharArt was founded on the belief that it is time for better answers to cultural engagement and workplace well-being questions. We are committed to providing high-quality solutions with authentic Indian art forms to help you solve even the most complex organizational challenges. We are devoted to finding better ways to equip you to discover more meaningful connections than ever before.
+            </p>
+            <A href="/about" class="button primary white-section-cta">
+              Learn About Bhar-Art
+            </A>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-panels-section">
+        <div class="cta-panels-container">
+          <div class="cta-panel cta-panel-left">
+            <h2 class="cta-panel-heading">Ask a question</h2>
+            <A href="/contact" class="button cta-panel-button">
+              Contact Us
+            </A>
+          </div>
+          <div class="cta-panel cta-panel-right">
+            <h2 class="cta-panel-heading">Our Partners</h2>
+            <A href="/partners" class="button cta-panel-button">
+              Learn More
+            </A>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

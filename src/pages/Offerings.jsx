@@ -1,4 +1,5 @@
 import '../App.css'
+import '../styles/Offerings.css'
 
 const offerings = [
   {

@@ -1,0 +1,135 @@
+/* Offerings Page Styles */
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 3rem 4.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.offering-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offering-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+.offering-header h3 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.8rem;
+  color: #843c23;
+  margin: 0 0 1rem;
+}
+
+.offering-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.offering-duration,
+.offering-format {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(204, 78, 0, 0.1);
+  color: #cc4e00;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.offering-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(47, 30, 15, 0.8);
+  margin: 0 0 1.5rem;
+}
+
+.offering-benefits {
+  margin-bottom: 1.5rem;
+}
+
+.offering-benefits h4 {
+  font-size: 1rem;
+  color: #843c23;
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+}
+
+.offering-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.offering-benefits li {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(132, 60, 35, 0.08);
+  color: #843c23;
+  border-radius: 6px;
+}
+
+/* Responsive Styles */
+@media (max-width: 960px) {
+  .offerings-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 3rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .offering-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .offering-card {
+    padding: 1.5rem;
+  }
+
+  .offering-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .offering-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .offering-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .offerings-grid {
+    padding: 1.5rem 1rem;
+  }
+
+  .offering-card {
+    padding: 1.25rem;
+  }
+
+  .offering-header h3 {
+    font-size: 1.3rem;
+  }
+}
+

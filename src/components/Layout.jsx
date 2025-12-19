@@ -1,6 +1,7 @@
 import { createSignal, createEffect, onCleanup, onMount } from 'solid-js'
 import { A } from '@solidjs/router'
 import '../App.css'
+import '../styles/Layout.css'
 
 export default function Layout(props) {
   const [isScrolled, setIsScrolled] = createSignal(false)
@@ -90,6 +91,9 @@ export default function Layout(props) {
 
       <footer class="footer">
         <div class="footer-content">
+          <A href="/" class="footer-logo-container">
+            <img src="/logo.png" alt="Bhar-Art Logo" class="footer-logo" />
+          </A>
           <div class="footer-brand">BharArt</div>
           <p class="footer-tagline">Bringing Indian Art & Culture to Your Organization</p>
           <div class="footer-links">

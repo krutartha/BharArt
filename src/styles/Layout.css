@@ -1,0 +1,466 @@
+/* Layout Styles - Header, Footer, Navigation, Mobile Menu, Buttons */
+
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  padding: 2rem 4.5rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 20;
+  color: #ffffff;
+  background: transparent;
+  transition: background-color 180ms ease, box-shadow 180ms ease, color 180ms ease, padding 180ms ease, gap 180ms ease;
+}
+
+.site-header--scrolled {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  color: #35155a;
+  box-shadow: 0 10px 30px -18px rgba(15, 23, 42, 0.6);
+  padding: 0.8rem 4.5rem 0.7rem;
+  gap: 2rem;
+}
+
+.site-header--scrolled .nav a {
+  color: #843c23;
+}
+
+.site-header--scrolled .logo-text {
+  color: #843c23;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.logo-image {
+  height: 5rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: height 180ms ease;
+}
+
+.site-header--scrolled .logo-image {
+  height: 3.5rem;
+}
+
+.logo-text {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  color: #843c23;
+  transition: font-size 180ms ease;
+  display: flex;
+  align-items: center;
+}
+
+.site-header--scrolled .logo-text {
+  font-size: 2rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: font-size 180ms ease;
+  line-height: 1;
+}
+
+.site-header--scrolled .nav {
+  font-size: 0.8rem;
+  gap: 1.25rem;
+}
+
+.nav a {
+  color: #843c23;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.nav a:hover {
+  text-decoration: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+  line-height: 1;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 30;
+  position: relative;
+}
+
+.hamburger-line {
+  width: 2rem;
+  height: 3px;
+  background: currentColor;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.site-header .hamburger-menu {
+  color: #843c23;
+}
+
+.site-header--scrolled .hamburger-menu {
+  color: #843c23;
+}
+
+.hamburger-line--open:nth-child(1) {
+  transform: rotate(45deg) translate(0.5rem, 0.5rem);
+}
+
+.hamburger-line--open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line--open:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  z-index: 25;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu--open {
+  width: 280px;
+  max-width: 85vw;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 24;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  gap: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.mobile-nav a {
+  color: #843c23;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(132, 60, 35, 0.1);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav a:hover {
+  color: #cc4e00;
+}
+
+.mobile-cta {
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.7rem;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: padding 180ms ease, font-size 180ms ease;
+}
+
+.site-header--scrolled .button {
+  color: #2f1e0f;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+.button.ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+
+.button.primary {
+  background: #cc4e00;
+  border-color: #cc4e00;
+  color: #ffffff;
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+.site-header--scrolled .button.primary {
+  background: #cc4e00;
+  border-color: #cc4e00;
+  color: #ffffff;
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+.site-header .button.primary {
+  background: #cc4e00;
+  border-color: #cc4e00;
+  color: #ffffff;
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+.footer {
+  margin-top: 4rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 4rem 4.5rem;
+  background: #843c23;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.footer-logo-container {
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo-container:hover {
+  opacity: 0.9;
+}
+
+.footer-logo {
+  height: 4rem;
+  width: auto;
+  display: block;
+}
+
+.footer-brand {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+.footer-tagline {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 960px) {
+  .site-header {
+    padding: 1.5rem 2rem 1.3rem;
+  }
+
+  .site-header--scrolled {
+    padding: 0.7rem 2rem 0.6rem;
+  }
+
+  .logo-image {
+    height: 4rem;
+  }
+
+  .site-header--scrolled .logo-image {
+    height: 2.5rem;
+  }
+
+  .nav {
+    gap: 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .header-actions {
+    gap: 1rem;
+  }
+
+  .button {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    padding: 3rem 2rem;
+  }
+
+  .footer-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    padding: 1.2rem 1.25rem 1rem;
+    justify-content: space-between;
+  }
+
+  .site-header--scrolled {
+    padding: 0.65rem 1.25rem 0.55rem;
+  }
+
+  .logo-image {
+    height: 3.5rem;
+  }
+
+  .site-header--scrolled .logo-image {
+    height: 2rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .header-actions .button.primary {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .header-actions {
+    gap: 0.75rem;
+  }
+
+  .button {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .site-header .button.primary {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .footer-logo {
+    height: 3rem;
+  }
+
+  .footer-brand {
+    font-size: 1.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 1rem 1rem 0.9rem;
+  }
+
+  .site-header--scrolled {
+    padding: 0.6rem 1rem 0.5rem;
+  }
+
+  .logo-image {
+    height: 3rem;
+  }
+
+  .site-header--scrolled .logo-image {
+    height: 1.75rem;
+  }
+
+  .button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer-logo {
+    height: 2.5rem;
+  }
+}
+

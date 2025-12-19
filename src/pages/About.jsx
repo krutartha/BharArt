@@ -1,4 +1,5 @@
 import '../App.css'
+import '../styles/About.css'
 
 const values = [
   {
